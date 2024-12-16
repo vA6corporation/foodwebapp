@@ -1,0 +1,21 @@
+<div class="container">
+    <form (ngSubmit)="onSubmit()" [formGroup]="formGroup" autocomplete="off">
+        <mat-form-field appearance="fill">
+            <mat-label>N° de RUC</mat-label>
+            <input type="text" matInput formControlName="ruc" [maxlength]="11">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Razon social</mat-label>
+            <input type="text" matInput formControlName="businessName">
+        </mat-form-field>
+        <div class="d-flex">
+            <span class="spacer"></span>
+            <div class="py-3">
+                <button type="button" [disabled]="isLoading" mat-raised-button routerLink="/businesses"
+                    color="primary">CANCELAR</button>
+                <span class="divider"></span>
+                <button type="submit" [disabled]="isLoading" mat-flat-button color="primary">GUARDAR</button>
+            </div>
+        </div>
+    </form>
+</div>

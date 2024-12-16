@@ -1,0 +1,23 @@
+<div class="container">
+    <form (ngSubmit)="onSubmit()" [formGroup]="formGroup" autocomplete="off">
+        <mat-form-field appearance="fill">
+            <mat-label>Seleccione un rango de fechas</mat-label>
+            <mat-date-range-input [rangePicker]="picker">
+                <input matStartDate placeholder="Desde" formControlName="startDate">
+                <input matEndDate placeholder="Hasta" formControlName="endDate">
+            </mat-date-range-input>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-date-range-picker #picker></mat-date-range-picker>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Empresa</mat-label>
+            <mat-select formControlName="business">
+                <mat-option value="" disabled>SELECCIONE UNA EMPRESA</mat-option>
+                @for (business of businesses; track business.id) {
+                    <mat-option [value]="business">{{ business.businessName | uppercase }}</mat-option>
+                }
+            </mat-select>
+        </mat-form-field>
+        <button type="submit" [disabled]="isLoading" mat-flat-button color="primary" class="w-100">DESCARGAR REPORTE DE EMPRESA</button>
+    </form>
+</div>

@@ -1,0 +1,29 @@
+<div class="container">
+    <form (ngSubmit)="onSubmit()" [formGroup]="formGroup" autocomplete="off">
+        <mat-form-field appearance="fill">
+            <mat-label>N° de DNI</mat-label>
+            <input type="text" matInput formControlName="dni" [maxlength]="8">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Nombres</mat-label>
+            <input type="text" matInput formControlName="name">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Empresa</mat-label>
+            <mat-select formControlName="business_id">
+                @for (business of businesses; track business.id) {
+                    <mat-option [value]="business.id">{{ business.businessName | uppercase }}</mat-option>
+                }
+            </mat-select>
+        </mat-form-field>
+        <div class="d-flex">
+            <span class="spacer"></span>
+            <div class="py-3">
+                <button type="button" [disabled]="isLoading" mat-raised-button routerLink="/customers"
+                    color="primary">CANCELAR</button>
+                <span class="divider"></span>
+                <button type="submit" [disabled]="isLoading" mat-flat-button color="primary">GUARDAR</button>
+            </div>
+        </div>
+    </form>
+</div>

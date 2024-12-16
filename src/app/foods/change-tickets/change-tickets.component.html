@@ -1,0 +1,59 @@
+<div class="container">
+    <form (ngSubmit)="onSubmit()" [formGroup]="formGroup" autocomplete="off">
+        <!-- <audio #speaker src="assets/ring.mp3"></audio> -->
+        <mat-form-field>
+            <mat-label>N° de DNI</mat-label>
+            <input #inputDni matInput formControlName="dni" maxlength="8">
+        </mat-form-field>
+    </form>
+    @if (customer) {
+    <h2 class="mat-title-medium">Cliente: {{ customer.name }}</h2>
+    <form [formGroup]="dateGroup" autocomplete="off">
+        <mat-form-field>
+            <mat-label>Seleccione una fecha</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="turnDate" (dateChange)="onDateChange()">
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+    </form>
+    @if (this.turns.length) {
+        <mat-action-list>
+            @if (getTurn('DESAYUNO')) {
+                <button type="button" mat-list-item>
+                    <div matListItemTitle>DESAYUNO</div>
+                    <span class="text-success">RECOGIDO</span>
+                </button>
+            } @else {
+                <button type="button" mat-list-item (click)="onChangeTicket('DESAYUNO')">
+                    <div matListItemTitle>DESAYUNO</div>
+                    <span class="text-danger">SIN RECOGER</span>
+                </button>
+            }
+            
+            @if (getTurn('ALMUERZO')) {
+                <button type="button" mat-list-item>
+                    <div matListItemTitle>ALMUERZO</div>
+                    <span class="text-success">RECOGIDO</span>
+                </button>
+            } @else {
+                <button type="button" mat-list-item (click)="onChangeTicket('ALMUERZO')">
+                    <div matListItemTitle>ALMUERZO</div>
+                    <span class="text-danger">SIN RECOGER</span>
+                </button>
+            }
+    
+            @if (getTurn('CENA')) {
+                <button type="button" mat-list-item>
+                    <div matListItemTitle>CENA</div>
+                    <span class="text-success">RECOGIDO</span>
+                </button>
+            } @else {
+                <button type="button" mat-list-item (click)="onChangeTicket('CENA')">
+                    <div matListItemTitle>CENA</div>
+                    <span class="text-danger">SIN RECOGER</span>
+                </button>
+            }
+        </mat-action-list>
+    }
+    }
+</div>

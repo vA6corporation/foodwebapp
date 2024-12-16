@@ -1,0 +1,9 @@
+<div class="container">
+    <form (ngSubmit)="onSubmit()" [formGroup]="formGroup" autocomplete="off">
+        <audio #speaker src="assets/ring.mp3"></audio>
+        <mat-form-field>
+            <mat-label>N° de DNI</mat-label>
+            <input #inputDni matInput formControlName="dni" maxlength="8">
+        </mat-form-field>
+    </form>
+</div>

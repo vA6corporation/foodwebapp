@@ -1,1 +1,57 @@
 /* You can add global styles to this file, and also import other style files */
+@use '@angular/material' as mat
+
+.mat-elevation-z2
+    @include mat.elevation(2)
+
+html, body
+    height: 100%
+    margin: 0
+
+mat-drawer-container
+    height: 100%
+
+.container
+    max-width: 90vw
+    padding-inline: 2rem
+    margin-top: 1rem
+    margin-left: auto
+    margin-right: auto
+    margin-bottom: 6rem
+
+mat-form-field
+    width: 100%
+
+.fixed-bottom
+    bottom: 1rem
+    right: 1rem
+    position: fixed
+
+.d-flex
+    display: flex
+
+.spacer
+    flex: 1 1 auto
+
+.divider
+    width: .5rem
+    height: auto
+    display: inline-block
+
+.text-muted
+    color: #6c757d !important
+
+.text-danger
+    color: #eb4034 !important
+
+.text-warning
+    color: #ffff35 !important
+
+.text-success
+    color: green
+
+.text-center
+    text-align: center
+
+.w-100
+    width: 100%
